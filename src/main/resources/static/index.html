@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Campaign Manager</title>
+
+</head>
+<body ng-controller="CampaignController as ctrl">
+<h1>{{ctrl.appName}}</h1>
+<h2>Add Campaign</h2>
+
+<table border="0">
+    <tr>
+        <td>Emp Id</td>
+        <td>{{employeeForm.empId}}</td>
+    </tr>
+</table>
+  <form >
+    <input type="text" ng-model="ctrl.campaign.name" placeholder="Campaing name" required> Campaign name<br>
+    <input type="text" ng-model="ctrl.campaign.keywords" placeholder="keywords" required> Keywords<br>
+    <input type="number" ng-model="ctrl.campaign.bidAmount" placeholder="Bid amount" required> Bid amount<br>
+    <input type="number" ng-model="ctrl.campaign.campaignFund" placeholder="Fund" required>Fund<br>
+    <input type="checkbox" ng-model="ctrl.campaign.status" placeholder="Staus" ng-true-value="'true'" ng-false-value="'false'" required>status:{{ctrl.campaign.status}}<br/><br>
+    <select ng-model="ctrl.campaign.town">
+        <option ng-model="ctrl.capaign.town">Cracow</option>
+        <option ng-model="ctrl.capaign.town">Warsaw</option>
+        <option ng-model="ctrl.capaign.town">London</option>
+        <option ng-model="ctrl.capaign.town">Paris</option>
+    </select>Select town<br>
+    <input type="number" ng-model="ctrl.campaign.radius" placeholder="Radius" required>Radius<br>
+    <button ng-click="ctrl.addCampaign(ctrl.campaign)">Add Campaign</button>
+  </form>
+
+<br>
+
+<h2> All Camps </h2>
+<table border="1">
+    <thead >
+    <tr>
+        <th>Id</th>
+        <th>Campaign Name</th>
+        <th>Keywords</th>
+        <th>Bid amount</th>
+        <th>Campaign fund</th>
+        <th>Status</th>
+        <th>Town</th>
+        <th>Radius</th>
+        <th>Delete Campaign</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="c in ctrl.campaigns">
+        <td>{{c.id}}</td>
+        <td>{{c.name}}</td>
+        <td>{{c.keywords}}</td>
+        <td>{{c.bidAmount}}</td>
+        <td>{{c.campaignFund}}</td>
+        <td>{{c.status}}</td>
+        <td>{{c.town}}</td>
+        <td>{{c.radius}}</td>
+        <td><button ng-click="ctrl.deleteCampaign(ctrl.c)">Delete</button></td>
+    </tr>
+    </tbody>
+</table>
+
+<script type="text/javascript" src="js/lib/angular/angular.js"></script>
+<script type="text/javascript" src="js/app/app.js"></script>
+</body>
+</html>
